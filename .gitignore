@@ -2,6 +2,7 @@
 !.gitignore
 !/sources
 !/sources/*
+!/sources/*/*
 !/translations
 !/translations/*
 !CMakeLists.txt
