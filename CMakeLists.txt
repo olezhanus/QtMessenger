@@ -1,6 +1,6 @@
 ﻿cmake_minimum_required(VERSION 3.12)
 
-project(Messenger)
+project(QtMessenger)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -22,7 +22,7 @@ endif()
 
 #здесь мы создаем переменную MESSENGER_LIBRARIES, в которой будем хранить
 #все подключаемые к проекту библиотеки, в т.ч. и библиотеки Qt
-set(MESSENGER_LIBRARIES)
+set(QTMESSENGER_LIBRARIES)
 
 #здесь мы создаем и заполняем список подключаемых модулей Qt
 #если нужно добавить модули, добавьте их в этот список по образцу:
@@ -30,16 +30,16 @@ set(MESSENGER_LIBRARIES)
 set(Qt6Modules Core Widgets)
 
 #здесь мы формируем из списка модулей список библиотек,
-#которые требуется подключить, и складываем их в MESSENGER_LIBRARIES
+#которые требуется подключить, и складываем их в QTMESSENGER_LIBRARIES
 foreach(QtModule IN LISTS Qt6Modules)
- list(APPEND MESSENGER_LIBRARIES Qt6::${QtModule})
+ list(APPEND QTMESSENGER_LIBRARIES Qt6::${QtModule})
 endforeach(QtModule)
 
 #здесь проверяется наличие всех необходимых модулей и компонентов Qt
 find_package(Qt6 COMPONENTS ${Qt6Modules} REQUIRED LinguistTools)
 
 #здесь мы формируем список всех исходников, ассоциированных с
-#проектом Messenger.
+#проектом QtMessenger.
 #на самом деле, обязательными являются только SRC RC и UI,
 #но я добавляю так же HEADERS, что бы они так же отображались
 #в дереве проектов.
@@ -87,11 +87,11 @@ endforeach()
 #подключаем файлы трансляции(переводов)
 qt6_add_translation(QM_FILES ${TS_FILES})
 
-add_executable(Messenger ${QM_FILES} ${SRC_FILES} ${HEADERS_FILES}
+add_executable(QtMessenger ${QM_FILES} ${SRC_FILES} ${HEADERS_FILES}
  ${RC_FILES} ${UI_FILES})
 
 #подключаем к проекту библиотеки
-target_link_libraries(Messenger
+target_link_libraries(QtMessenger
  PUBLIC
- ${MESSENGER_LIBRARIES}
+ ${QTMESSENGER_LIBRARIES}
  )
