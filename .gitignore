@@ -1,0 +1,6 @@
+*
+!.gitignore
+!sources/*
+!translations/*
+!CMakeLists.txt
+!README.md
