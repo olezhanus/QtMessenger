@@ -1,9 +1,4 @@
-*
+
 !.gitignore
-!/sources
-!/sources/*
-!/sources/*/*
-!/translations
-!/translations/*
-!CMakeLists.txt
-!README.md
+/build
+*.user
